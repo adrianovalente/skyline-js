@@ -13,5 +13,12 @@
     "nodejs"
   ],
   "author": "Adriano Valente <dri@cool.me>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
 }
