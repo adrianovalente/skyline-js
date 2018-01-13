@@ -3,6 +3,7 @@ import Promise from 'bluebird'
 import request from 'request'
 
 const MOMENT_FORMAT = 'DD-MM-YYYY'
+const ROOT_URL = 'https://www.skyline.com.br/cloud/multi/skyline-web-gateway/file'
 
 export {
   find,
@@ -22,7 +23,7 @@ function find (n, opts = {}) {
     .then(nexxera => {
       return new Promise(function (resolve, reject) {
         request({
-          url: `https://www.skyline.com.br/cloud/multi/skyline-web-gateway/file/list/${options.from}/${options.to}`,
+          url: `${ROOT_URL}/list/${options.from}/${options.to}`,
           method: 'get',
           headers: {
             Cookie: nexxera.token
@@ -61,7 +62,7 @@ function getMessage (n, message) {
   return markAsUnread(n, message)
     .then(message => new Promise(function (resolve, reject) {
       request({
-        url: `https://www.skyline.com.br/cloud/multi/skyline-web-gateway/file/download`,
+        url: `${ROOT_URL}/download`,
         method: 'post',
         headers: {
           Cookie: n.token
@@ -82,15 +83,11 @@ function getMessage (n, message) {
 }
 
 function markAsReadOrUnread (n, message, read) {
-  const url = read
-    ? 'https://www.skyline.com.br/cloud/multi/skyline-web-gateway/file/read'
-    : 'https://www.skyline.com.br/cloud/multi/skyline-web-gateway/file/unread'
-
   return n._authenticate()
     .then(nexxera => {
       return new Promise(function (resolve, reject) {
         request({
-          url,
+          url: `${ROOT_URL}/${read ? 'read' : 'unread'}`,
           method: 'put',
           headers: {
             Cookie: nexxera.token
