@@ -4,7 +4,8 @@
   "description": "Nexxera interface implemented in Node.JS",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"There are no tests so far! 🤫\""
+    "test": "ava",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [
     "nexxera",
@@ -15,10 +16,23 @@
   "author": "Adriano Valente <dri@cool.me>",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.26.0",
+    "ava": "^0.24.0",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-plugin-syntax-class-properties": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0"
+  },
+  "ava": {
+    "require": "babel-register",
+    "babel": {
+      "babelrc": true
+    },
+    "files": [
+      "**/*.test.js",
+      "!dist/**/*.test.js"
+    ]
   }
 }
