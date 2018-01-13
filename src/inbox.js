@@ -30,7 +30,7 @@ function find (n, opts = {}) {
         }, function (err, res, body) {
           if (err) return reject(err)
           if (res.statusCode !== 200) return reject(new Error('status code ' + res.statusCode + ': ' + body))
-          
+
           const messages = JSON.parse(res.body)
 
           resolve(

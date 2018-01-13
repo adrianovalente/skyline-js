@@ -2,7 +2,6 @@ import * as auth from './auth'
 import * as inbox from './inbox'
 
 export default class Nexxera {
-
   constructor (credentials = {}) {
     const { username, password } = credentials
     if (!username || !password) throw new Error('Please provide username and password when initializing!')
@@ -31,5 +30,4 @@ export default class Nexxera {
         return self
       })
   }
-
 }
