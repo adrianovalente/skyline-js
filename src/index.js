@@ -1,4 +1,5 @@
 import * as auth from './auth'
+import * as inbox from './inbox'
 
 export default class Nexxera {
 
@@ -8,6 +9,10 @@ export default class Nexxera {
 
     this.username = username
     this.password = password
+  }
+
+  getMessages (opts) {
+    return inbox.list(this, opts)
   }
 
   _authenticate () {
