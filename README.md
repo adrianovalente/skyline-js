@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/adrianovalente/nexxera.svg?token=sXzfpyZgxDGcjGqaejqQ&branch=master)](https://travis-ci.com/adrianovalente/nexxera)
+
 # Nexxera Connector
 This is a Node.js interface that connects to Nexxera API, allowing you to check you inbox natively using only javascript code.
 
@@ -30,8 +32,8 @@ nexxera.getMessages({
 
 ```
 
-## Distributing and Contributing
+## Contributing
 
-This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
+This project is licensed under the [MIT](./LICENSE) license.
 
 Please feel free to open issues and pull requests and help documenting code!
