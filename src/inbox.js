@@ -1,5 +1,5 @@
-import Promise from 'bluebird'
 import moment from 'moment'
+import Promise from 'bluebird'
 import request from 'request'
 
 const MOMENT_FORMAT = 'DD-MM-YYYY'
@@ -11,10 +11,13 @@ export {
   getMessage
 }
 
-function find (n, options = {
-  from: moment().format(MOMENT_FORMAT),
-  to: moment().format(MOMENT_FORMAT)
-}) {
+function find (n, opts = {}) {
+  const options = Object.assign({
+    from: moment().format(MOMENT_FORMAT),
+    to: moment().format(MOMENT_FORMAT),
+    onlyDownloadHeaders: false
+  }, opts)
+
   return n._authenticate()
     .then(nexxera => {
       return new Promise(function (resolve, reject) {
@@ -28,7 +31,19 @@ function find (n, options = {
           if (err) return reject(err)
           if (res.statusCode !== 200) return reject(new Error('status code ' + res.statusCode + ': ' + body))
           
-          resolve(JSON.parse(res.body))
+          const messages = JSON.parse(res.body)
+
+          resolve(
+            options.onlyDownloadHeaders
+              ? messages
+              : Promise.all(messages.map(message =>
+                getMessage(nexxera, message)
+                  .then(content => ({
+                    ...message,
+                    content
+                  }))
+              ))
+          )
         })
       })
     })
