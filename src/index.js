@@ -12,7 +12,11 @@ export default class Nexxera {
   }
 
   getMessages (opts) {
-    return inbox.list(this, opts)
+    return inbox.find(this, opts)
+  }
+
+  markAsUnread (message) {
+    return inbox.markAsUnread(this, message)
   }
 
   _authenticate () {
