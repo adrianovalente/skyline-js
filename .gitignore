@@ -150,3 +150,6 @@ Session.vim
 tags
 
 # End of https://www.gitignore.io/api/osx,vim,node,linux,sublimetext
+
+# TODO REMOVE LATER!
+test/
