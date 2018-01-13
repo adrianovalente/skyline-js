@@ -4,6 +4,7 @@
   "description": "Nexxera interface implemented in Node.JS",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "eslint src/",
     "test": "ava",
     "test:watch": "npm run test -- --watch"
   },
