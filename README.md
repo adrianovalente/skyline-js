@@ -20,8 +20,10 @@ const nexxera = new Nexxera({
 })
 
 nexxera.getMessages({
-  from: '2018-01-02',
-  to: '2018-01-04'
+  from: '2018-01-02', // default is today
+  to: '2018-01-04'    // default is today,
+
+  onlyDownloadHeaders: true // default is false
 }).then(messages => {
   console.log(messages)
 })
