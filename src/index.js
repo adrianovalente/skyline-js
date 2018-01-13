@@ -15,6 +15,10 @@ export default class Nexxera {
     return inbox.find(this, opts)
   }
 
+  getMessage (message) {
+    return inbox.getMessage(this, message)
+  }
+
   markAsUnread (message) {
     return inbox.markAsUnread(this, message)
   }

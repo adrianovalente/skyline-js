@@ -7,7 +7,8 @@ const MOMENT_FORMAT = 'DD-MM-YYYY'
 export {
   find,
   markAsRead,
-  markAsUnread
+  markAsUnread,
+  getMessage
 }
 
 function find (n, options = {
@@ -39,6 +40,30 @@ function markAsRead (n, message) {
 
 function markAsUnread (n, message) {
   return markAsReadOrUnread(n, message, false)
+}
+
+function getMessage (n, message) {
+  return markAsUnread(n, message)
+    .then(message => new Promise(function (resolve, reject) {
+      request({
+        url: `https://www.skyline.com.br/cloud/multi/skyline-web-gateway/file/download`,
+        method: 'post',
+        headers: {
+          Cookie: n.token
+        },
+        form: {
+          filename: message.filename
+        }
+      }, function (err, res, body) {
+        if (err) return reject(err)
+        if (res.statusCode !== 200) return reject(new Error('status code ' + res.statusCode + ': ' + body))
+
+        resolve(body)
+      })
+    }))
+    .then(r => markAsRead(n, message)
+      .then(() => r)
+    )
 }
 
 function markAsReadOrUnread (n, message, read) {
