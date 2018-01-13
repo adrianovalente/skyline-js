@@ -151,5 +151,7 @@ tags
 
 # End of https://www.gitignore.io/api/osx,vim,node,linux,sublimetext
 
+dist/
+
 # TODO REMOVE LATER!
 test/authentication.test.js

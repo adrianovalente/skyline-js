@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "eslint src/",
     "test": "ava",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "clear": "rm -rf build",
+    "build": "npm run clear; mkdir -p dist && babel --out-dir dist src"
   },
   "keywords": [
     "nexxera",
