@@ -1,0 +1,17 @@
+{
+  "name": "nexxera",
+  "version": "0.0.1",
+  "description": "Nexxera interface implemented in Node.JS",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"There are no tests so far! 🤫\""
+  },
+  "keywords": [
+    "nexxera",
+    "messages",
+    "interface",
+    "nodejs"
+  ],
+  "author": "Adriano Valente <dri@cool.me>",
+  "license": "MIT"
+}
