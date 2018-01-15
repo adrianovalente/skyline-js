@@ -12,21 +12,21 @@ export {
   getMessage
 }
 
-function find (n, opts = {}) {
+function find (skyline, opts = {}) {
   const options = Object.assign({
     from: moment().format(MOMENT_FORMAT),
     to: moment().format(MOMENT_FORMAT),
     onlyDownloadHeaders: false
   }, opts)
 
-  return n._authenticate()
-    .then(nexxera => {
+  return skyline._authenticate()
+    .then(skyline => {
       return new Promise(function (resolve, reject) {
         request({
           url: `${ROOT_URL}/list/${options.from}/${options.to}`,
           method: 'get',
           headers: {
-            Cookie: nexxera.token
+            Cookie: skyline.token
           }
         }, function (err, res, body) {
           if (err) return reject(err)
@@ -38,7 +38,7 @@ function find (n, opts = {}) {
             options.onlyDownloadHeaders
               ? messages
               : Promise.all(messages.map(message =>
-                getMessage(nexxera, message)
+                getMessage(skyline, message)
                   .then(content => ({
                     ...message,
                     content
@@ -50,22 +50,22 @@ function find (n, opts = {}) {
     })
 }
 
-function markAsRead (n, message) {
-  return markAsReadOrUnread(n, message, true)
+function markAsRead (skyline, message) {
+  return markAsReadOrUnread(skyline, message, true)
 }
 
-function markAsUnread (n, message) {
-  return markAsReadOrUnread(n, message, false)
+function markAsUnread (skyline, message) {
+  return markAsReadOrUnread(skyline, message, false)
 }
 
-function getMessage (n, message) {
-  return markAsUnread(n, message)
+function getMessage (skyline, message) {
+  return markAsUnread(skyline, message)
     .then(message => new Promise(function (resolve, reject) {
       request({
         url: `${ROOT_URL}/download`,
         method: 'post',
         headers: {
-          Cookie: n.token
+          Cookie: skyline.token
         },
         form: {
           filename: message.filename
@@ -77,20 +77,20 @@ function getMessage (n, message) {
         resolve(body)
       })
     }))
-    .then(r => markAsRead(n, message)
+    .then(r => markAsRead(skyline, message)
       .then(() => r)
     )
 }
 
-function markAsReadOrUnread (n, message, read) {
-  return n._authenticate()
-    .then(nexxera => {
+function markAsReadOrUnread (skyline, message, read) {
+  return skyline._authenticate()
+    .then(skyline => {
       return new Promise(function (resolve, reject) {
         request({
           url: `${ROOT_URL}/${read ? 'read' : 'unread'}`,
           method: 'put',
           headers: {
-            Cookie: nexxera.token
+            Cookie: skyline.token
           },
           json: [message]
         }, function (err, res, body) {

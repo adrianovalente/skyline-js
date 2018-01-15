@@ -1,7 +1,7 @@
 import * as auth from './auth'
 import * as inbox from './inbox'
 
-export default class Nexxera {
+export default class Skyline {
   constructor (credentials = {}) {
     const { username, password } = credentials
     if (!username || !password) throw new Error('Please provide username and password when initializing!')

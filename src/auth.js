@@ -4,19 +4,19 @@ import Promise from 'bluebird'
 const AUTH_URL = 'https://www.skyline.com.br/cloud/multi/skyline-web-gateway/login'
 
 /**
- * Gets the auth token for a fiven nexxera instance
+ * Gets the auth token for a fiven skyline instance
  *
- * @param {nexxera}
+ * @param {skyline}
  * @returns {Promise}
  */
-export function getAuthToken (nexxera) {
+export function getAuthToken (skyline) {
   return new Promise((resolve, reject) => {
     request({
       url: AUTH_URL,
       method: 'post',
       form: {
-        username: nexxera.username,
-        password: nexxera.password
+        username: skyline.username,
+        password: skyline.password
       }
     }, (err, res, body) => {
       if (err) return reject(err)
@@ -27,7 +27,7 @@ export function getAuthToken (nexxera) {
           .split('session=')[1]
           .split(';')[0]
 
-        return resolve(`firstAccess=false; defaultServer=2; currentUser=${nexxera.username}; session=${token}`)
+        return resolve(`firstAccess=false; defaultServer=2; currentUser=${skyline.username}; session=${token}`)
       } catch (e) {
         reject(e)
       }
