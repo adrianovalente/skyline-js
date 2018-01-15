@@ -1,6 +1,6 @@
 {
   "name": "skyline-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Skyline interface implemented in Node.JS",
   "main": "dist/index.js",
   "scripts": {
