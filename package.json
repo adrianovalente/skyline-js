@@ -1,7 +1,7 @@
 {
-  "name": "nexxera",
+  "name": "skyline-js",
   "version": "0.0.1",
-  "description": "Nexxera interface implemented in Node.JS",
+  "description": "Skyline interface implemented in Node.JS",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src/",
@@ -12,7 +12,7 @@
     "postinstall": "postinstall-build dist"
   },
   "keywords": [
-    "nexxera",
+    "skyline",
     "messages",
     "interface",
     "nodejs"
