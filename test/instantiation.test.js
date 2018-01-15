@@ -1,11 +1,10 @@
 import test from 'ava'
-import Nexxera from '../src'
+import Skyline from '../src'
 
 test('throw error when credentials are not provided', t => {
-  t.throws(() => new Nexxera())
+  t.throws(() => new Skyline())
 })
 
 test('succeeds when credentials are ok', t => {
-  new Nexxera({ username: 'hello', password: 'world' })
-  t.pass()
+  t.notThrows(() => new Skyline({ username: 'hello', password: 'world' }))
 })
