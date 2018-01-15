@@ -1,10 +1,10 @@
 # skyline-js
 
-[![Build Status](https://travis-ci.com/adrianovalente/skyline.svg?token=sXzfpyZgxDGcjGqaejqQ&branch=master)](https://travis-ci.com/adrianovalente/skyline)
+[![Build Status](https://travis-ci.org/adrianovalente/skyline-js.svg?branch=master)](https://travis-ci.org/adrianovalente/skyline-js)
 
-> Check out your Skyline inbox with native javascript
+> Check out your Skyline inbox with native Javascript
 
-This is a Node.JS interface that connects to the SkyLine API, allowing you to check you inbox without having to run any binary file
+Skyline is a platform provided by the [Nexxera Group](http://www.nexxera.com/) to receive and send messages. This project is a **non-official** Node.JS package that implements an interface to its API, allowing you to check you inbox without having to run any binary file.
 
 ## Getting Started
 To add this module as a dependency to your project, you can simply `npm install` it:
@@ -13,7 +13,6 @@ To add this module as a dependency to your project, you can simply `npm install`
 npm install --save skyline-js
 ```
 
-## Example
 Here is an example of how to use this tool to get your inbox messages:
 
 ``` javascript
@@ -37,6 +36,4 @@ skyline.getMessages({
 
 ## Contributing
 
-This project is licensed under the [MIT](./LICENSE) license.
-
-Please feel free to open issues and pull requests and help documenting code!
+This project is licensed under the [MIT](./LICENSE) license. Please feel free to open issues and submitting pull requests!
