@@ -9,7 +9,7 @@
     "test:watch": "npm run test -- --watch",
     "clear": "rm -rf build",
     "build": "npm run clear; mkdir -p dist && babel --out-dir dist src",
-    "postinstall": "postinstall-build dist"
+    "prepublish": "npm run build"
   },
   "keywords": [
     "skyline",
@@ -30,7 +30,6 @@
     "babel-preset-env": "^1.6.0",
     "bluebird": "^3.5.1",
     "moment": "^2.20.1",
-    "postinstall-build": "^5.0.1",
     "request": "^2.83.0"
   },
   "ava": {
